@@ -10,7 +10,6 @@ import heroBcg from "../../assets/smd-hero.jpg";
 import heroBcg2 from "../../assets/smd-owner.jpg";
 import DietVideo from "../../components/diet/DietVideo";
 import MealVideo from "../../components/meals/MealVideo";
-import ContactForm from "../contact/ContactForm";
 
 import styled from "styled-components";
 

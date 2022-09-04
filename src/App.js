@@ -2,16 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // Pages
-import {
-  Home,
-  Contact,
-  ContactForm,
-  Login,
-  Register,
-  Reset,
-  Shop,
-  Admin,
-} from "./pages";
+import { Home, Contact, Login, Register, Reset, Shop, Admin } from "./pages";
 // Components
 import { Header, Footer } from "./components";
 import AdminOnlyRoute from "./components/adminOnlyRoute/AdminOnlyRoute";
