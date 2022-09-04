@@ -68,7 +68,7 @@ const Contact = () => {
           <div className={styles.details}>
             <Card cardClass={styles.card2}>
               <h1>Our Contact Information</h1>
-              <p>Fill the form or contact us directly</p>
+
               <div className={styles.icons}>
                 <span>
                   <FaPhoneAlt />
