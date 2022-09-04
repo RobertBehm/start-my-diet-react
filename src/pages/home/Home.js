@@ -6,7 +6,7 @@ import DietPlan from "../../components/diet/DietPlan";
 import MealHeader from "../../components/meals/MealHeader";
 import MealPlan from "../../components/meals/MealPlan";
 import SubFooter from "../../components/footer/SubFooter";
-import heroBcg from "../../assets/smd-hero.jpg";
+//import heroBcg from "../../assets/smd-hero.jpg";
 import heroBcg2 from "../../assets/smd-owner.jpg";
 import DietVideo from "../../components/diet/DietVideo";
 import MealVideo from "../../components/meals/MealVideo";
@@ -19,6 +19,7 @@ const Home = () => {
       <StyledContainer>
         {/* Hero Description */}
         <div className="hero-desc">
+          <h1>The Right Products To Reach Your Goals At The Right Price!</h1>
           <p className="hero-text">
             Start My Diet is Rhode Island's leading supplement store bringing
             you premium supplements from the all the top brands at competitive
@@ -31,6 +32,11 @@ const Home = () => {
           </p>
           <br />
           <p className="hero-text">
+            No more spinning your wheels, and wondering why all your hardwork is
+            not paying off. We take the guesswork out and get you real results
+          </p>
+          <br />
+          <p className="hero-text">
             We sell meals on site, with over 80+ different meals to choose from,
             so depending on your fitness goals we have something for everyone...
           </p>
@@ -39,11 +45,17 @@ const Home = () => {
             We also have a private gym on site that is available 24 hrs with
             tanning, massage chairs and a VIP room..
           </p>
+          <div className="btn-position-1">
+            <Link to="/shop">
+              <button className="--btn --btn-primary --btn-full-width">
+                Shop Now
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Hero image */}
         <div className="hero-splash">
-          <img src={heroBcg} alt="store" className="store-hero" />
           <img src={heroBcg2} alt="store owner" className="store-owner-hero" />
         </div>
 
@@ -72,6 +84,13 @@ const Home = () => {
             to reach your goals in a timely fashion. No guesswork real science
             to get you real results
           </p>
+          <div className="btn-position-2">
+            <Link to="/contact" className="--btn-container">
+              <button className="--btn --btn-primary --btn-full-width --btn-spacer">
+                Set Up A Free Consultation
+              </button>
+            </Link>
+          </div>
         </div>
 
         {/* Meal Video */}
@@ -93,11 +112,13 @@ const Home = () => {
             micronutrients you need to feel your best.
           </p>
           <br />
-          <a href="https://startmydietmeals.com">
-            <button className="--btn --btn-primary --btn-full-width">
-              View Menu
-            </button>
-          </a>
+          <div className="btn-position-3">
+            <a href="https://startmydietmeals.com">
+              <button className="--btn --btn-primary --btn-full-width --btn-wide">
+                View Menu
+              </button>
+            </a>
+          </div>
         </div>
       </StyledContainer>
       <SubFooter />
@@ -118,16 +139,30 @@ const StyledContainer = styled.section`
     )
     [center-end] 1fr [full-end];
 
+  @media screen and (max-width: 1200px) {
+    grid-template-rows: repeat(6, min-content);
+    grid-row-gap: 50px;
+  }
+
   .hero-splash {
-    background-color: #f1f5f8;
     grid-column: col-start 5 / center-end;
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: -90px;
     .store-hero {
       width: 300px;
     }
     .store-owner-hero {
-      width: 300px;
+      width: 100%;
+      height: 80%;
+    }
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 0px;
+      grid-column: center-start / center-end;
+      grid-row: 1 / 2;
+
+      .store-owner-hero {
+        height: 100%;
+      }
     }
   }
 
@@ -136,27 +171,66 @@ const StyledContainer = styled.section`
     margin-bottom: 15px;
     padding-right: 10px;
     grid-column: center-start / col-end 4;
+
+    @media screen and (max-width: 1200px) {
+      grid-column: center-start / center-end;
+      grid-row: 2 / 3;
+    }
   }
   .diet-video {
     //background-color: #f1f5f8;
     grid-column: center-start / col-end 4;
+    @media screen and (max-width: 1200px) {
+      grid-column: center-start / center-end;
+      grid-row: 3 / 4;
+    }
   }
   .diet-desc {
     //background-color: #f1f5f8;
     padding-left: 10px;
     grid-column: col-start 5 / center-end;
+
+    .--btn-spacer {
+      margin-top: 15px;
+    }
+
+    @media screen and (max-width: 1200px) {
+      grid-column: center-start / center-end;
+      grid-row: 4 / 5;
+    }
   }
   .meal-video {
     //background-color: #f1f5f8;
     grid-column: col-start 5 / center-end;
     grid-row: 3 / 4;
+    @media screen and (max-width: 1200px) {
+      grid-column: center-start / center-end;
+      grid-row: 5 / 6;
+    }
   }
   .meal-desc {
     //background-color: #f1f5f8;
     grid-column: center-start / col-end 4;
+    @media screen and (max-width: 1200px) {
+      grid-column: center-start / center-end;
+      grid-row: 6 / 7;
+    }
   }
 
-  .contact-form {
-    grid-row: 4 / 6;
+  @media screen and (min-width: 1200px) {
+    .btn-position-1 {
+      margin-top: 50px;
+    }
+    .btn-position-2 {
+      display: flex;
+      justify-content: end;
+
+      .--btn-container {
+        width: 330px !important;
+      }
+    }
+    .btn-position-3 {
+      margin-top: 64px;
+    }
   }
 `;
