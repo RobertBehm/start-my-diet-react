@@ -548,3 +548,7 @@ a {
   font-size: 1.9rem;
   color: var(--dark-blue)
 }
+
+.bold {
+  font-weight: 800;
+}

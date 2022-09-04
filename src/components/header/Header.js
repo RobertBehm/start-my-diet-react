@@ -118,7 +118,7 @@ const Header = () => {
               <img
                 src={logoSVG}
                 alt="company logo"
-                style={{ height: "80px", paddingBottom: "1em" }}
+                style={{ height: "80px" }}
               />
             </Link>
           </div>

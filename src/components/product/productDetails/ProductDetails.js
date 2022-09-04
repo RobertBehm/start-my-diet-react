@@ -61,14 +61,14 @@ const ProductDetails = () => {
                 <img src={product.imageURL} alt={product.name} />
               </div>
               <div className={styles.content}>
-                <h3>{product.name}</h3>
+                <h1>{product.name}</h1>
                 <p className={styles.price}>{`$${product.price}`}</p>
                 <p>{product.desc}</p>
                 <p>
-                  <b>SKU</b> {product.id}
+                  <b className="bold">SKU</b> {product.id}
                 </p>
                 <p>
-                  <b>Brand</b> {product.brand}
+                  <b className="bold">Brand</b> {product.brand}
                 </p>
 
                 <div className={styles.count}>
