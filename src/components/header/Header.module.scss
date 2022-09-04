@@ -24,7 +24,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    position: relative;
+    //position: relative;
 
     @media screen and (max-width: 800px) {
       margin-bottom: 20px;
@@ -38,15 +38,13 @@ header {
   }
 
   nav {
-    width: 75%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
     ul {
       display: flex;
       justify-content: space-between;
-      position: absolute;
-      left: 200px;
 
       list-style: none;
 
