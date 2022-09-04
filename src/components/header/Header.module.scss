@@ -99,6 +99,7 @@ header {
   .menu-icon {
     cursor: pointer;
     display: none;
+    color: var(--dark-blue)
   }
 
   @media screen and (max-width: 800px) {

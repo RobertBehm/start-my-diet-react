@@ -39,9 +39,8 @@ const Checkout = () => {
   const description = `Start My Diet payment: email: ${customerEmail}, Amount: ${totalAmount}`;
 
   useEffect(() => {
-    // https://eshop-react-firebase.herokuapp.com/create-payment-intent
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:4242/create-payment-intent", {
+    fetch("https://start-my-diet.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
