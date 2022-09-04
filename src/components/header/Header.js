@@ -169,7 +169,7 @@ const Header = () => {
               <span className={styles.links}>
                 <ShowOnLogout>
                   <NavLink to="/login" className={activeLink}>
-                    <RiAccountCircleLine size={20} />
+                    <RiAccountCircleLine size={22} />
                   </NavLink>
                 </ShowOnLogout>
                 {/*<ShowOnLogin>

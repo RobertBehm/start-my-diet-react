@@ -110,7 +110,7 @@ header {
       left: 0;
       width: 50%;
       height: 100vh;
-      background-color: var(--dark-blue);
+      background-color: var(--med-blue);
       padding: 1rem;
       z-index: 999;
       transform: translateX(-200%);
@@ -122,7 +122,7 @@ header {
         right: 0;
         width: 100%;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
+        //background-color: rgba(0, 0, 0, 0.5);
         transform: translateX();
         transition: all 0.3s;
       }
@@ -134,7 +134,7 @@ header {
       ul {
         display: block;
         .logo-mobile {
-          display: flex;
+          display: none;
           justify-content: space-between;
           align-items: center;
           > * {
@@ -142,10 +142,11 @@ header {
           }
         }
         li {
-          padding: 5px 0;
-          border-bottom: 1px solid #333;
+          padding: 10px 0;
+          //border-bottom: 1px solid #333;
           a {
             display: block;
+            color: #fff;
           }
         }
       }
@@ -153,9 +154,10 @@ header {
       .header-right {
         display: block;
         .cart {
+          color: #fff;
           // display: block;
           // padding: 5px 0;
-          border-bottom: 1px solid #333;
+          //border-bottom: 1px solid #333;
           // a {
           //   position: relative;
           //   p {
@@ -169,11 +171,13 @@ header {
 
         .links {
           display: block;
+      
           a {
             display: block;
+            color: white;
             margin: 0;
             padding: 5px 0;
-            border-bottom: 1px solid #333;
+            //border-bottom: 1px solid #333;
           }
         }
       }
@@ -181,17 +185,18 @@ header {
     .cart {
       display: block;
       padding: 5px 0;
+      color: #fff;
       // border-bottom: 1px solid #333;
       a {
-        color: #fff;
+        color: #fff !important;
         position: relative;
         &:hover {
-          color: var(--dark-blue);
+          //color: var(--dark-blue);
         }
         p {
           position: absolute;
           top: -1rem;
-          left: 5rem;
+          left: 2rem;
           font-weight: 500;
           color: #fff;
         }
@@ -214,7 +219,7 @@ header {
 
 .active {
   position: relative;
-  color: var(--dark-blue);
+  //color: var(--dark-blue);
 }
 
 .active::after {
