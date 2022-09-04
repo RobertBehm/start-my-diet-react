@@ -69,7 +69,7 @@ const Cart = () => {
             <p>Your cart is currently empty.</p>
             <br />
             <div>
-              <Link to="/#products">&larr; Continue shopping</Link>
+              <Link to="/shop">&larr; Continue shopping</Link>
             </div>
           </>
         ) : (
@@ -140,7 +140,7 @@ const Cart = () => {
               </button>
               <div className={styles.checkout}>
                 <div>
-                  <Link to="/#products">&larr; Continue shopping</Link>
+                  <Link to="/shop">&larr; Continue shopping</Link>
                 </div>
                 <br />
                 <Card cardClass={styles.card}>

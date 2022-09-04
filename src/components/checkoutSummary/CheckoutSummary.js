@@ -22,7 +22,7 @@ const CheckoutSummary = () => {
           <>
             <p>No item in your cart.</p>
             <button className="--btn">
-              <Link to="/#products">Back To Shop</Link>
+              <Link to="/shop">Back To Shop</Link>
             </button>
           </>
         ) : (
