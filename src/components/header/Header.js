@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { FaShoppingCart, FaTimes, FaUserCircle } from "react-icons/fa";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { auth } from "../../firebase/config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -169,7 +169,7 @@ const Header = () => {
               <span className={styles.links}>
                 <ShowOnLogout>
                   <NavLink to="/login" className={activeLink}>
-                    <RiAccountCircleLine size={22} />
+                    Login
                   </NavLink>
                 </ShowOnLogout>
                 {/*<ShowOnLogin>
@@ -194,8 +194,16 @@ const Header = () => {
           </nav>
 
           <div className={styles["menu-icon"]}>
-            {cart}
-            <HiOutlineMenuAlt3 size={28} onClick={toggleMenu} />
+            {!showMenu ? cart : null}
+            {!showMenu ? (
+              <HiOutlineMenuAlt3
+                size={28}
+                onClick={toggleMenu}
+                style={{ margin: "5px 20px" }}
+              />
+            ) : (
+              <HiOutlineX size={32} onClick={toggleMenu} />
+            )}
           </div>
         </div>
       </header>
