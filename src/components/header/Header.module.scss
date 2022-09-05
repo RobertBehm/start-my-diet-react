@@ -222,7 +222,8 @@ header {
 
 .active {
   position: relative;
-  color: var(--dark-blue);
+  //color: var(--med-blue);
+  //border: 1px solid var(--med-blue);
 }
 
 .active::after {

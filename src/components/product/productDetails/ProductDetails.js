@@ -1,4 +1,5 @@
 import styles from "./ProductDetails.module.scss";
+import styled from "styled-components";
 
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -12,6 +13,7 @@ import {
   DECREASE_CART,
   selectCartItems,
 } from "../../../redux/slice/cartSlice";
+import { selectProducts } from "../../../redux/slice/productSlice";
 import useFetchDocument from "../../../customHooks/useFetchDocument";
 import useFetchCollection from "../../../customHooks/useFetchCollection";
 import Card from "../../card/Card";
@@ -20,8 +22,13 @@ import StarsRating from "react-star-rate";
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [flavor, setFlavor] = useState();
+  //const [size, setSize] = useState();
+
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const products = useSelector(selectProducts);
+
   const { document } = useFetchDocument("products", id);
   const { data } = useFetchCollection("reviews");
   const filteredReviews = data.filter((review) => review.productID === id);
@@ -38,6 +45,7 @@ const ProductDetails = () => {
   const addToCart = (product) => {
     dispatch(ADD_TO_CART(product));
     dispatch(CALCULATE_TOTAL_QUANTITY());
+    console.log(product);
   };
 
   const decreaseCart = (product) => {
@@ -64,6 +72,40 @@ const ProductDetails = () => {
                 <h1>{product.name}</h1>
                 <p className={styles.price}>{`$${product.price}`}</p>
                 <p>{product.desc}</p>
+
+                {/* Product Dropdown */}
+                <StyledRadio className="radio btn-group">
+                  <p>
+                    <b className="bold">Flavor</b>
+                  </p>
+                  <input
+                    className="radio__input"
+                    type="radio"
+                    name="radio"
+                    id="flavor-1"
+                    value={product.flavor1}
+                    onChange={(e) => {
+                      setFlavor(e.target.value);
+                    }}
+                  />
+                  <label className="radio__label btn-margin" htmlFor="flavor-1">
+                    {product.flavor1}
+                  </label>
+                  <input
+                    className="radio__input"
+                    type="radio"
+                    name="radio"
+                    id="flavor-2"
+                    value={product.flavor2}
+                    onChange={(e) => {
+                      setFlavor(e.target.value);
+                    }}
+                  />
+                  <label className="radio__label" htmlFor="flavor-2">
+                    {product.flavor2}
+                  </label>
+                </StyledRadio>
+                {/* End Of Product Dropdowns */}
                 <p>
                   <b className="bold">SKU</b> {product.id}
                 </p>
@@ -135,3 +177,37 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+
+const StyledRadio = styled.div`
+  display: flex;
+  align-items: center;
+  .radio__input {
+    display: none;
+  }
+
+  p {
+    margin-right: 15px;
+  }
+
+  .radio__label {
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+    border-color: transparent;
+    background-color: var(--light-grey);
+    color: var(--med-blue);
+    margin: 0px 10px;
+    width: 25%;
+    padding: 8px 0px;
+    font-size: 16px;
+    //font-family: Darwin Pro ExtraLight;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  input[type="radio"]:checked + .radio__label {
+    //background-color: var(--light-blue);
+    border: 1.5px solid var(--med-blue);
+    color: var(--med-blue);
+  }
+`;

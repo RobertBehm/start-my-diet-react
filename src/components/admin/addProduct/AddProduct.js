@@ -26,6 +26,8 @@ const initialState = {
   name: "",
   imageURL: "",
   price: 0,
+  flavor1: "",
+  flavor2: "",
   category: "",
   brand: "",
   desc: "",
@@ -93,6 +95,8 @@ const AddProduct = () => {
         name: product.name,
         imageURL: product.imageURL,
         price: Number(product.price),
+        flavor1: product.flavor1,
+        flavor2: product.flavor2,
         category: product.category,
         brand: product.brand,
         desc: product.desc,
@@ -124,6 +128,8 @@ const AddProduct = () => {
         name: product.name,
         imageURL: product.imageURL,
         price: Number(product.price),
+        flavor1: product.flavor1,
+        flavor2: product.flavor2,
         category: product.category,
         brand: product.brand,
         desc: product.desc,
@@ -198,6 +204,23 @@ const AddProduct = () => {
               required
               name="price"
               value={product.price}
+              onChange={(e) => handleInputChange(e)}
+            />
+            <label>Product flavor #1:</label>
+            <input
+              type="text"
+              placeholder="Product flavor"
+              required
+              name="flavor1"
+              value={product.flavor1}
+              onChange={(e) => handleInputChange(e)}
+            />
+            <label>Product flavor #2:</label>
+            <input
+              type="text"
+              placeholder="Product flavor"
+              name="flavor2"
+              value={product.flavor2}
               onChange={(e) => handleInputChange(e)}
             />
             <label>Product Category:</label>

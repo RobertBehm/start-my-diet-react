@@ -38,6 +38,9 @@ const Product = () => {
 
   return (
     <section>
+      <div className={styles.maintenance}>
+        <h2>Check back Later, site is down for maintenance</h2>
+      </div>
       <div className={`container ${styles.product}`}>
         <aside
           className={

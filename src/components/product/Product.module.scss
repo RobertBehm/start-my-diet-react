@@ -1,3 +1,12 @@
+.maintenance {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  h2 {
+    color: red
+  }
+}
+
 .product {
   display: flex;
   position: relative;
