@@ -25,6 +25,8 @@ const Cart = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
+  console.log(cartItems);
+
   const navigate = useNavigate();
 
   const increaseCart = (cart) => {
@@ -79,6 +81,7 @@ const Cart = () => {
                 <tr>
                   <th>s/n</th>
                   <th>Product</th>
+                  <th>Flavor</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
@@ -87,7 +90,15 @@ const Cart = () => {
               </thead>
               <tbody>
                 {cartItems.map((cart, index) => {
-                  const { id, name, price, imageURL, cartQuantity } = cart;
+                  const {
+                    id,
+                    name,
+                    price,
+                    imageURL,
+                    cartQuantity,
+                    flavorQuantity,
+                  } = cart;
+
                   return (
                     <tr key={id}>
                       <td>{index + 1}</td>
@@ -100,6 +111,17 @@ const Cart = () => {
                           alt={name}
                           style={{ width: "100px" }}
                         />
+                      </td>
+                      <td>
+                        {flavorQuantity.map((flavor) => {
+                          const { name, quantity } = flavor;
+                          return (
+                            <div className="flavors">
+                              <p>{name}</p>
+                              <span>x{quantity}</span>
+                            </div>
+                          );
+                        })}
                       </td>
                       <td>{price}</td>
                       <td>

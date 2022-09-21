@@ -55,6 +55,7 @@ const OrderDetails = () => {
                 <tr>
                   <th>s/n</th>
                   <th>Product</th>
+                  <th>Flavor</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
@@ -62,7 +63,14 @@ const OrderDetails = () => {
               </thead>
               <tbody>
                 {order.cartItems.map((cart, index) => {
-                  const { id, name, price, imageURL, cartQuantity } = cart;
+                  const {
+                    id,
+                    name,
+                    price,
+                    imageURL,
+                    cartQuantity,
+                    flavorQuantity,
+                  } = cart;
                   return (
                     <tr key={id}>
                       <td>
@@ -77,6 +85,17 @@ const OrderDetails = () => {
                           alt={name}
                           style={{ width: "100px" }}
                         />
+                      </td>
+                      <td style={{ width: "200px" }}>
+                        {flavorQuantity.map((flavor) => {
+                          const { name, quantity } = flavor;
+                          return (
+                            <div className="flavors">
+                              <p>{name}</p>
+                              <span>x{quantity}</span>
+                            </div>
+                          );
+                        })}
                       </td>
                       <td>{price}</td>
                       <td>{cartQuantity}</td>

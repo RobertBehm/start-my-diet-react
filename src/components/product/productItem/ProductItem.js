@@ -37,12 +37,9 @@ const ProductItem = ({ product, grid, id, name, price, desc, imageURL }) => {
         </div>
         {!grid && <p className={styles.desc}>{shortenText(desc, 200)}</p>}
 
-        <button
-          className="--btn --btn-danger"
-          onClick={() => addToCart(product)}
-        >
-          Add To Cart
-        </button>
+        <Link to={`/product-details/${id}`}>
+          <button className="--btn --btn-danger">View Product</button>
+        </Link>
       </div>
     </Card>
   );

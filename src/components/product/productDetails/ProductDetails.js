@@ -22,7 +22,7 @@ import StarsRating from "react-star-rate";
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [flavor, setFlavor] = useState();
+  const [flavor, setFlavor] = useState("");
   //const [size, setSize] = useState();
 
   const dispatch = useDispatch();
@@ -43,9 +43,21 @@ const ProductDetails = () => {
   }, [document]);
 
   const addToCart = (product) => {
-    dispatch(ADD_TO_CART(product));
+    const _product = Object.assign({}, product);
+    delete _product.flavor1;
+    delete _product.flavor2;
+
+    if (flavor === "") {
+      /* if 'flavor' not selected */ dispatch(
+        ADD_TO_CART({ ..._product, flavor: product.flavor1 })
+      );
+    } else {
+      /* if 'flavor' not selected */
+      dispatch(ADD_TO_CART({ ..._product, flavor: flavor }));
+    }
+
     dispatch(CALCULATE_TOTAL_QUANTITY());
-    console.log(product);
+    console.log(_product);
   };
 
   const decreaseCart = (product) => {
@@ -91,19 +103,23 @@ const ProductDetails = () => {
                   <label className="radio__label btn-margin" htmlFor="flavor-1">
                     {product.flavor1}
                   </label>
-                  <input
-                    className="radio__input"
-                    type="radio"
-                    name="radio"
-                    id="flavor-2"
-                    value={product.flavor2}
-                    onChange={(e) => {
-                      setFlavor(e.target.value);
-                    }}
-                  />
-                  <label className="radio__label" htmlFor="flavor-2">
-                    {product.flavor2}
-                  </label>
+                  {product.flavor2 !== "Empty" ? (
+                    <>
+                      <input
+                        className="radio__input"
+                        type="radio"
+                        name="radio"
+                        id="flavor-2"
+                        value={product.flavor2}
+                        onChange={(e) => {
+                          setFlavor(e.target.value);
+                        }}
+                      />
+                      <label className="radio__label" htmlFor="flavor-2">
+                        {product.flavor2}
+                      </label>
+                    </>
+                  ) : null}
                 </StyledRadio>
                 {/* End Of Product Dropdowns */}
                 <p>

@@ -20,6 +20,7 @@ import { selectShippingAddress } from "../../redux/slice/checkoutSlice";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
+import { RiSecurePaymentLine } from "react-icons/ri";
 
 const CheckoutForm = () => {
   const [message, setMessage] = useState(null);
@@ -126,7 +127,10 @@ const CheckoutForm = () => {
           </div>
           <div>
             <Card cardClass={`${styles.card} ${styles.pay}`}>
-              <h3>Stripe Checkout</h3>
+              <div style={{ display: "flex", alignItems: "flex-start" }}>
+                <h3>Secure Checkout</h3>
+                {/*<RiSecurePaymentLine color="green" size={20} />*/}
+              </div>
               <PaymentElement id={styles["payment-element"]} />
               <button
                 disabled={isLoading || !stripe || !elements}

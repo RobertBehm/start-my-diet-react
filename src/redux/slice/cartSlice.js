@@ -23,14 +23,57 @@ const cartSlice = createSlice({
       if (productIndex >= 0) {
         // Item already exists in the cart
         // Increase the cartQuantity
-        state.cartItems[productIndex].cartQuantity += 1;
-        toast.info(`${action.payload.name} increased by one`, {
-          position: "top-left",
-        });
+
+        state.cartItems[productIndex].cartQuantity =
+          state.cartItems[productIndex].flavorQuantity
+            .map((item) => item.quantity)
+            .reduce((a, b) => a + b, 0) + 1;
+
+        if (
+          /* if 'flavor' is exist */
+          state.cartItems[productIndex].flavorQuantity.some(
+            (item) => item.name === action.payload.flavor
+          )
+        ) {
+          state.cartItems[productIndex].flavorQuantity = [
+            ...state.cartItems[productIndex].flavorQuantity.filter(
+              (item) => item.name !== action.payload.flavor
+            ),
+            {
+              name: action.payload.flavor,
+              quantity:
+                state.cartItems[productIndex].flavorQuantity.find(
+                  (item) => item.name === action.payload.flavor
+                ).quantity + 1,
+            },
+          ];
+
+          toast.info(`${action.payload.name} increased by one`, {
+            position: "top-left",
+          });
+        } else {
+          /* if 'flavor' is not exist */
+          state.cartItems[productIndex].flavorQuantity = [
+            ...state.cartItems[productIndex].flavorQuantity,
+            { name: action.payload.flavor, quantity: 1 },
+          ];
+
+          toast.info(`${action.payload.name} increased by one`, {
+            position: "top-left",
+          });
+        }
       } else {
         // Item doesn't exists in the cart
         // Add item to the cart
-        const tempProduct = { ...action.payload, cartQuantity: 1 };
+
+        const flavor = action.payload.flavor;
+        delete action.payload.flavor;
+        const tempProduct = {
+          ...action.payload,
+          cartQuantity: 1,
+          flavorQuantity: [{ name: flavor, quantity: 1 }],
+        };
+
         state.cartItems.push(tempProduct);
         toast.success(`${action.payload.name} added to cart`, {
           position: "top-left",
